@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Prey : MonoBehaviour {
+public class Prey : Organism {
 
 	// Use this for initialization
 	void Start () {
