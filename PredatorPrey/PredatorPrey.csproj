@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Organism.cs" />
     <Compile Include="Assets\Scripts\Predator.cs" />
     <Compile Include="Assets\Scripts\Prey.cs" />
+    <Compile Include="Assets\Scripts\SimulationManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

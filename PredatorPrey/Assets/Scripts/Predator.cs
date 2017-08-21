@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Predator : MonoBehaviour {
+public class Predator : Organism {
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +13,5 @@ public class Predator : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }

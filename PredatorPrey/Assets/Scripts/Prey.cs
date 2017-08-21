@@ -13,4 +13,13 @@ public class Prey : Organism {
 	void Update () {
 		
 	}
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Predator")
+        {
+            this.TakeDamage(0.01f);
+            this.CheckDeath();
+        }
+    }
 }

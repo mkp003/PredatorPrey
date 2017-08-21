@@ -9,9 +9,9 @@ public class Organism : MonoBehaviour {
 
     // Base attributes contained by all organisms
     [SerializeField]
-    private int health;
+    private float health;
     [SerializeField]
-    private int speed;
+    private float speed;
     [SerializeField]
     private int reproductionRate;
 
@@ -35,7 +35,7 @@ public class Organism : MonoBehaviour {
     /// <param name="health"></param>
     /// <param name="speed"></param>
     /// <param name="size"></param>
-    public void CreateOrganism(int health, int speed, int reproductionRate, GameObject prefab)
+    public void CreateOrganism(float health, float speed, int reproductionRate, GameObject prefab)
     {
         this.health = health;
         this.speed = speed;
@@ -47,7 +47,7 @@ public class Organism : MonoBehaviour {
     /// GetOrganismHealth() will return the organisms health.
     /// </summary>
     /// <returns>this.health</returns>
-    public int GetOrganismHealth()
+    public float GetOrganismHealth()
     {
         return this.health;
     }
@@ -57,7 +57,7 @@ public class Organism : MonoBehaviour {
     /// GetOrganismSpeed() will return the organisms speed.
     /// </summary>
     /// <returns>this.speed</returns>
-    public int GetOrganismSpeed()
+    public float GetOrganismSpeed()
     {
         return this.speed;
     }
@@ -83,14 +83,36 @@ public class Organism : MonoBehaviour {
 
 
     /// <summary>
-    /// Movement() will move the organism in a new direction
+    /// Movement() will move the organism in a new direction.
     /// </summary>
     public void Movement()
     {
         float newX = Random.Range(-7.0f, -3.0f);
         float newY = Random.Range(-1.0f, 4.0f);
-        Mathf.MoveTowards(this.transform.position.x, newX, Time.deltaTime);
-        Mathf.MoveTowards(this.transform.position.y, newY, Time.deltaTime);
+        Mathf.MoveTowards(this.transform.position.x, newX, this.speed);
+        Mathf.MoveTowards(this.transform.position.y, newY, this.speed);
     }
 
+
+    /// <summary>
+    /// TakeDamage() will incure the specified damage to the current organism.
+    /// </summary>
+    /// <param name="damage">float value of the damage dealt</param>
+    public void TakeDamage(float damage)
+    {
+        this.health = this.health - damage;
+    }
+
+
+    /// <summary>
+    /// CheckDeath() will check to see if the current organism is dead. If so, 
+    /// then the organism is removed from the simulation.
+    /// </summary>
+    public void CheckDeath()
+    {
+        if(this.health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
