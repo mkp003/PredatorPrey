@@ -11,8 +11,9 @@ public class Prey : Organism {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        // Change direction every few seconds
+        InvokeRepeating("Movement", 0f, 2.0f);
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {

@@ -26,7 +26,7 @@ public class Organism : MonoBehaviour {
         InvokeRepeating("Reproduce", 10.0f, 10.0f);
 
         // Change direction every few seconds
-        InvokeRepeating("Movement", 0f, 2.0f);
+        InvokeRepeating("Movement", 0f, 20);
     }
 
     /// <summary>
@@ -87,10 +87,11 @@ public class Organism : MonoBehaviour {
     /// </summary>
     public void Movement()
     {
-        float newX = Random.Range(-7.0f, -3.0f);
-        float newY = Random.Range(-1.0f, 4.0f);
-        Mathf.MoveTowards(this.transform.position.x, newX, this.speed);
-        Mathf.MoveTowards(this.transform.position.y, newY, this.speed);
+        //print("Movement occuring");
+        float newX = Random.Range(-2.0f, 11.0f);
+        float newY = Random.Range(-4.5f, 4.5f);
+        Vector2 newLocation = new Vector2(newX, newY);
+        transform.position = Vector2.MoveTowards(transform.position, newLocation, this.speed);
     }
 
 

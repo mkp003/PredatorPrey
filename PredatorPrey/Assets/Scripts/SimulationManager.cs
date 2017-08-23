@@ -8,18 +8,31 @@ using UnityEngine;
 /// </summary>
 public class SimulationManager : MonoBehaviour {
 
+    // Prey fields
     [SerializeField]
     private int numberOfPrey;
-
     [SerializeField]
-    private int numberOfPredators;
-
+    private float preyHealth;
+    [SerializeField]
+    private float preySpeed;
+    [SerializeField]
+    private int preyReproductionRate;
     [SerializeField]
     private GameObject preyPrefab;
 
+    // Predator fields
+    [SerializeField]
+    private int numberOfPredators;
+    [SerializeField]
+    private float predatorHealth;
+    [SerializeField]
+    private float predatorSpeed;
+    [SerializeField]
+    private int predatorReproductionRate;
     [SerializeField]
     private GameObject predatorPrefab;
 
+    // Game Information
     [SerializeField]
     private Vector2 startPosition;
 
@@ -51,7 +64,17 @@ public class SimulationManager : MonoBehaviour {
     {
         for(int i = 0; i < number; i++)
         {
-            Instantiate(organism, CreateRandomPosition(), transform.rotation);
+            GameObject newOrganism = Instantiate(organism, CreateRandomPosition(), transform.rotation);
+            if(newOrganism.tag == "Predator")
+            {
+                newOrganism.GetComponent<Predator>().CreateOrganism(this.predatorHealth, this.predatorSpeed,
+                    this.predatorReproductionRate, this.predatorPrefab);
+            }
+            else
+            {
+                newOrganism.GetComponent<Prey>().CreateOrganism(this.preyHealth, this.preySpeed,
+                    this.preyReproductionRate, this.preyPrefab);
+            }
         }
     }
 
