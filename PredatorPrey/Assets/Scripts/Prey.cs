@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class Prey : Organism {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         // Change direction every few seconds
-        //InvokeRepeating("Movement", 0f, 2.0f);
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        Movement();
+        InvokeRepeating("ChooseRandomDirection", 0f, 1.0f);
+
+        // Reproduce every few seconds
+        InvokeRepeating("Reproduce", 5.0f, 15.0f);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    // Update is called once per frame
+    void Update()
+    {
+        Movement(this.GetTargetPosition());
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Predator")
         {

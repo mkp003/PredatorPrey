@@ -19,6 +19,11 @@ public class Organism : MonoBehaviour {
     [SerializeField]
     private GameObject organismPrefab;
 
+    // Target Destination
+    private Vector3 targetDestination;
+
+    private float currentHealth;
+
 
 
     /// <summary>
@@ -66,26 +71,45 @@ public class Organism : MonoBehaviour {
 
 
     /// <summary>
+    /// GetTargetPosition() will return the organism's target destination
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetTargetPosition()
+    {
+        return this.targetDestination;
+    }
+
+
+    /// <summary>
     /// Reproduce() will create a new organism exactly the same as the parent
     /// </summary>
     public void Reproduce()
     {
         GameObject progeny = Instantiate(this.organismPrefab, transform.position, transform.rotation);
+        progeny.GetComponent<Organism>().CreateOrganism(this.health, this.speed, this.reproductionRate, this.organismPrefab);
     }
 
 
     /// <summary>
     /// Movement() will move the organism in a new direction.
     /// </summary>
-    public void Movement()
+    public void Movement(Vector3 target)
+    {
+        // Move towards the new range
+        transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime*this.speed);
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void ChooseRandomDirection()
     {
         // Range within the simulation
         int newX = Random.Range(-2, 11);
         int newY = Random.Range(-5, 5);
 
-        // Move towards the new range
-        Vector3 newLocation = new Vector3(transform.position.x + newX, transform.position.y + newY, 1.0f);
-        transform.position = Vector3.MoveTowards(transform.position, newLocation, Time.deltaTime*this.speed);
+        this.targetDestination = new Vector3(newX, newY, 1.0f);
     }
 
 
