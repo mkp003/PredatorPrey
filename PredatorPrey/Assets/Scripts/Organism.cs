@@ -20,14 +20,6 @@ public class Organism : MonoBehaviour {
     private GameObject organismPrefab;
 
 
-    private void Start()
-    {
-        // Reproduce every few seconds
-        InvokeRepeating("Reproduce", 10.0f, 10.0f);
-
-        // Change direction every few seconds
-        InvokeRepeating("Movement", 0f, 20);
-    }
 
     /// <summary>
     /// CreateOrganism() will set the base attributes of the current organism.
@@ -87,11 +79,13 @@ public class Organism : MonoBehaviour {
     /// </summary>
     public void Movement()
     {
-        //print("Movement occuring");
-        float newX = Random.Range(-2.0f, 11.0f);
-        float newY = Random.Range(-4.5f, 4.5f);
-        Vector2 newLocation = new Vector2(newX, newY);
-        transform.position = Vector2.MoveTowards(transform.position, newLocation, this.speed);
+        // Range within the simulation
+        int newX = Random.Range(-2, 11);
+        int newY = Random.Range(-5, 5);
+
+        // Move towards the new range
+        Vector3 newLocation = new Vector3(transform.position.x + newX, transform.position.y + newY, 1.0f);
+        transform.position = Vector3.MoveTowards(transform.position, newLocation, Time.deltaTime*this.speed);
     }
 
 
