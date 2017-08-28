@@ -18,6 +18,10 @@ public class SimulationManager : MonoBehaviour {
     [SerializeField]
     private int preyReproductionRate;
     [SerializeField]
+    private int preyMetabolism;
+    [SerializeField]
+    private float preyEnergy;
+    [SerializeField]
     private GameObject preyPrefab;
 
     // Predator fields
@@ -29,6 +33,10 @@ public class SimulationManager : MonoBehaviour {
     private float predatorSpeed;
     [SerializeField]
     private int predatorReproductionRate;
+    [SerializeField]
+    private int predatorMetabolism;
+    [SerializeField]
+    private float predatorEnergy;
     [SerializeField]
     private GameObject predatorPrefab;
 
@@ -68,12 +76,12 @@ public class SimulationManager : MonoBehaviour {
             if(newOrganism.tag == "Predator")
             {
                 newOrganism.GetComponent<Predator>().CreateOrganism(this.predatorHealth, this.predatorSpeed,
-                    this.predatorReproductionRate, this.predatorPrefab);
+                    this.predatorReproductionRate, this.predatorMetabolism, this.predatorEnergy, this.predatorPrefab);
             }
             else
             {
                 newOrganism.GetComponent<Prey>().CreateOrganism(this.preyHealth, this.preySpeed,
-                    this.preyReproductionRate, this.preyPrefab);
+                    this.preyReproductionRate, this.preyMetabolism, this.preyEnergy, this.preyPrefab);
             }
         }
     }

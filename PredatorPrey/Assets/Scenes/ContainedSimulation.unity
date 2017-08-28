@@ -452,12 +452,16 @@ MonoBehaviour:
   numberOfPrey: 5
   preyHealth: 1
   preySpeed: 5
-  preyReproductionRate: 0
+  preyReproductionRate: 2
+  preyMetabolism: 1
+  preyEnergy: 0.1
   preyPrefab: {fileID: 1489877514922786, guid: 4ff66dcf0848b534b8682bbc5cd366ff, type: 2}
   numberOfPredators: 1
   predatorHealth: 20
   predatorSpeed: 5
-  predatorReproductionRate: 0
+  predatorReproductionRate: 1
+  predatorMetabolism: 1
+  predatorEnergy: 1
   predatorPrefab: {fileID: 1777278061424300, guid: cebe59abb3af3db4298fc40f703422c4,
     type: 2}
   startPosition: {x: 0, y: 0}
@@ -626,31 +630,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1 &2069736147
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2069736148}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2069736148
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2069736147}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.96, y: -0.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

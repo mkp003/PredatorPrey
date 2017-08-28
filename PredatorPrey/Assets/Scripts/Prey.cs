@@ -11,7 +11,10 @@ public class Prey : Organism {
         InvokeRepeating("ChooseRandomDirection", 0f, 1.0f);
 
         // Reproduce every few seconds
-        InvokeRepeating("Reproduce", 5.0f, 15.0f);
+        InvokeRepeating("Reproduce", 5.0f, (100.0f/this.GetOrganismReproductiveRate()));
+
+        // Metabolism starts
+        InvokeRepeating("EnergyLoss", 1.0f, (100.0f/this.GetOrganismMetabolism()));
     }
 
     // Update is called once per frame
@@ -20,8 +23,10 @@ public class Prey : Organism {
         Movement(this.GetTargetPosition());
     }
 
+
     private void OnTriggerStay2D(Collider2D collision)
     {
+        // Within clutches of a predator
         if (collision.gameObject.tag == "Predator")
         {
             this.TakeDamage(0.01f);
